@@ -61,8 +61,8 @@ function promptUser() {
         },
     ]).then(response => {
         console.log(response);
-        //console.log(response.github);
-        fs.writeFile("readMe.md", JSON.stringify(response), err => {
+        const readmeTitle = response.title + ".md";
+        fs.writeFile(readmeTitle, JSON.stringify(response), err => {
             if (err) console.err(err);
             else console.log("Success!");
         })
