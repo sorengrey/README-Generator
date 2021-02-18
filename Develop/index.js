@@ -3,18 +3,19 @@ const fs = require('fs');
 const util = require('util');
 const inquirer = require('inquirer');
 const generateMarkdown = require("./generateMarkdown.js");
-// you might need one for the badges -- check npmjs.com's libraries
+const writeFileAsync = util.promisify(fs.writeFile);
+// const badging = require('badging');
 
 console.log(process.argv);
 // console.log(fs);
 
 // An array of questions for user input
-inquirer
-    .prompt([
+function promptUser() {
+    return inquirer.prompt([
         {
             type: 'input',
             message: 'What is the title of your project?',
-            name: 'projectname',
+            name: 'title',
         },
         {
             type: 'input',
@@ -42,9 +43,11 @@ inquirer
             name: 'test',
         },
         {
-            type: 'input',
+            // not working yet - need to import the list somehow
+            type: 'list',
             message: 'Which license is your project protected under?',
             name: 'license',
+            choices: ['choice'],
         },
         {
             type: 'input',
@@ -56,22 +59,28 @@ inquirer
             message: 'What is your email address?',
             name: 'email',
         },
-    ])
-    .then((response) => {
-});
-
-// TODO: Create a function to write README file - doesn't work yet - figure out how to put response in there
-function writeToFile(fileName, data) {
-    fs.appendFile('new-readme.md', data, (err) => {
-        err ? console.error(err) : console.log('success');
-        fs.appendFile('new-readme.md', "test")
+    ]).then(response => {
+        console.log(response);
+        //console.log(response.github);
+        fs.writeFile("readMe.md", JSON.stringify(response), err => {
+            if (err) console.err(err);
+            else console.log("Success!");
+        })
     })
 }
+
+// TODO: Create a function to write README file - doesn't work yet - figure out how to put response in there
+//function writeToFile(fileName, response) {
+    // let fileName = response.title;
+    // console.log(fileName);
+    // fs.writeFile(fileName);
+    // })
+//}
 
 // TODO: Create a function to initialize app
 function init() { }
 
 // Function call to initialize app
 init();
-
-// exports
+//writeToFile();
+promptUser();
