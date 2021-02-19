@@ -2,11 +2,8 @@
 const fs = require('fs');
 const util = require('util');
 const inquirer = require('inquirer');
-const generateMarkdown = require("./generateMarkdown.js");
 const writeFileAsync = util.promisify(fs.writeFile);
 // const badging = require('badging');
-
-console.log(process.argv);
 
 // An array of questions for user input
 function promptUser() {
@@ -42,11 +39,10 @@ function promptUser() {
             name: 'test',
         },
         {
-            // not working yet - need to import the list somehow
             type: 'list',
-            message: 'Which license is your project protected under?',
+            message: 'Which open source license is your project protected under?',
             name: 'license',
-            choices: ['choice'],
+            choices: ['MIT', 'Apache 2.0', 'BSD', 'GPL', 'MPL-2.0'],
         },
         {
             type: 'input',
@@ -67,16 +63,16 @@ const theMarkdown =
 ### Description
 ${response.description}
 
-### Table Of Contents
+<div align="center"> ### Table Of Contents
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Contributing](#Contributing)
 - [Tests](#Tests)
 - [License](#License)
-- [Questions](#Questions)
+- [Questions](#Questions)</div>
 
 ### Installation <a name="Installation"></a>
-${response.install}
+How to install: ${response.install}
 
 ### Usage <a name="Usage"></a>
 ${response.usage}
@@ -88,20 +84,19 @@ ${response.contributions}
 ${response.test}
 
 ### License <a name="License"></a>
-${response.license}
+This project is licensed under ${response.license}. For more information about this license, visit [opensource.org](http://www.opensource.org).
 
 ### Questions  <a name="Questions"></a>
 [Click here to visit my GitHub](http://github.com/${response.github}/)
 and if you have any questions, send an email to ${response.email}.`
 
-        const readmeTitle = response.title + ".md";
-        fs.writeFile(readmeTitle, theMarkdown, err => {
-            if (err) console.err(err);
-            else console.log("Success!");
+    const readmeTitle = response.title + ".md";
+    fs.writeFile(readmeTitle, theMarkdown, err => {
+        if (err) console.err(err);
+        else console.log("Success! Your README has been generated and saved as " + readmeTitle + ".");
          })
      })
 }
-
 
 // TODO: Create a function to initialize app
 async function init() {
@@ -110,5 +105,3 @@ async function init() {
 
 // Function call to initialize app
 init();
-//writeToFile();
-
