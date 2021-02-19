@@ -91,7 +91,8 @@ ${response.test}
 ${response.license}
 
 ### Questions
-${response.github} ${response.email}`
+[Click here to visit my GitHub](http://github.com/${response.github}/)
+and if you have any questions, send an email to ${response.email}.`
 
         const readmeTitle = response.title + ".md";
         fs.writeFile(readmeTitle, theMarkdown, err => {
