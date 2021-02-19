@@ -63,13 +63,13 @@ const theMarkdown =
 ### Description
 ${response.description}
 
-<div align="center"> ### Table Of Contents
+### Table Of Contents
 - [Installation](#Installation)
 - [Usage](#Usage)
 - [Contributing](#Contributing)
 - [Tests](#Tests)
 - [License](#License)
-- [Questions](#Questions)</div>
+- [Questions](#Questions)
 
 ### Installation <a name="Installation"></a>
 How to install: ${response.install}
