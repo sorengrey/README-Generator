@@ -4,7 +4,7 @@
 This project is meant to make generating a professional README quick and easy. It runs in the terminal, asking the user questions about their project. When the answers are completed, a README file is created and ready to be uploaded to the user's repo.
 
 ![screenshot of portfolio website](./example-screenshot-for-readme.png?raw=true "screenshot of example readme")
-[Click here for a video walkthrough.](https://sorengrey.github.io/responsive-portfolio-hw/)<br><br>
+[Click here for a video walkthrough.](https://drive.google.com/file/d/1bzHdx7Wd3P8uZFoL2_o9AesQtEHDc-aW/view?usp=sharing)<br><br>
 
 ### Table Of Contents
 - [Installation](#Installation)
