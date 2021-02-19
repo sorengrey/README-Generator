@@ -68,29 +68,29 @@ const theMarkdown =
 ${response.description}
 
 ### Table Of Contents
-- Installation
-- Usage
-- Contributing
-- Tests
-- License
-- Questions
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Contributing](#Contributing)
+- [Tests](#Tests)
+- [License](#License)
+- [Questions](#Questions)
 
-### Installation
+### Installation <a name="Installation"></a>
 ${response.install}
 
-### Usage
+### Usage <a name="Usage"></a>
 ${response.usage}
 
-### Contributing
+### Contributing <a name="Contributing"></a>
 ${response.contributions}
 
-### Tests
+### Tests <a name="Tests"></a>
 ${response.test}
 
-### License
+### License <a name="License"></a>
 ${response.license}
 
-### Questions
+### Questions  <a name="Questions"></a>
 [Click here to visit my GitHub](http://github.com/${response.github}/)
 and if you have any questions, send an email to ${response.email}.`
 
