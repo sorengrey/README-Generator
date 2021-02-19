@@ -7,7 +7,6 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // const badging = require('badging');
 
 console.log(process.argv);
-// console.log(fs);
 
 // An array of questions for user input
 function promptUser() {
@@ -25,7 +24,7 @@ function promptUser() {
         {
             type: 'input',
             message: 'How is your project installed?',
-            name: 'installation',
+            name: 'install',
         },
         {
             type: 'input',
@@ -61,26 +60,54 @@ function promptUser() {
         },
     ]).then(response => {
         console.log(response);
+
+const theMarkdown =
+`# ${response.title}
+        
+### Description
+${response.description}
+
+### Table Of Contents
+- Installation
+- Usage
+- Contributing
+- Tests
+- License
+- Questions
+
+### Installation
+${response.install}
+
+### Usage
+${response.usage}
+
+### Contributing
+${response.contributions}
+
+### Tests
+${response.test}
+
+### License
+${response.license}
+
+### Questions
+${response.github} ${response.email}`
+
         const readmeTitle = response.title + ".md";
-        fs.writeFile(readmeTitle, JSON.stringify(response), err => {
+        fs.writeFile(readmeTitle, theMarkdown, err => {
             if (err) console.err(err);
             else console.log("Success!");
-        })
-    })
+         })
+     })
 }
 
-// TODO: Create a function to write README file - doesn't work yet - figure out how to put response in there
-//function writeToFile(fileName, response) {
-    // let fileName = response.title;
-    // console.log(fileName);
-    // fs.writeFile(fileName);
-    // })
-//}
 
 // TODO: Create a function to initialize app
-function init() { }
+async function init() {
+    promptUser();
+}
 
 // Function call to initialize app
 init();
 //writeToFile();
-promptUser();
+
